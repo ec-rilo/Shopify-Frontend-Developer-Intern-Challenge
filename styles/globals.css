@@ -1,16 +1,35 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../public/fonts/Roboto/Roboto-Regular.ttf');
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../public/fonts/Roboto/Roboto-Medium.ttf');
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../public/fonts/Roboto/Roboto-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Black';
+  src: url('../public/fonts/Roboto/Roboto-Black.ttf');
+}
+
+:root {
+  /* -------------- Fonts -------------- */
+  --fnt-regular: 'Roboto-Regular';
+  --fnt-medium: 'Roboto-Medium';
+  --fnt-bold: 'Roboto-Bold';
+  --fnt-dark: 'Roboto-Black';
+
+  /* -------------- Colors -------------- */
+  --clr-purple-blue: '#6b2bd9';
+  --clr-white: '#FFFFFF';
+  --clr-black: '#000000';
+  --clr-porcelain: '#F1F2F7';
+  --clr-waikawa-grey: '#6A6F95';
+  --oslo-grey: '#8D8D8E';
 }
