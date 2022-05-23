@@ -1,4 +1,9 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+// Firebase
+import { auth } from '../firebaseConfig';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 // Components
 import StyledNav from '../components/Nav';
@@ -18,11 +23,26 @@ const StyledUpperCont = styled(UpperCont)`
   background-color: var(--clr-porcelain);
 `;
 
+const getFirstName = (name) => {
+  const whitespaceIndex = name.indexOf(' ');
+  const firstName = name.slice(0, whitespaceIndex);
+  return firstName;
+};
+
 function UpperCont({ className }) {
+  const [user, loading, error] = useAuthState(auth);
+  const [firstName, setFirstName] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      setFirstName(getFirstName(user.displayName));
+    }
+  }, [user]);
+
   return (
     <div className={className}>
       <StyledContainer fullPadding>
-        <StyledNav />
+        <StyledNav dashboard userName={firstName}/>
         <IntroCont>
           <StyledDashboardIntro />
         </IntroCont>
