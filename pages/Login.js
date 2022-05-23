@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-// Note: Cont is short for Container
+// Firebase
+import { signInWithRedirect } from 'firebase/auth';
+import { auth, provider } from '../firebaseConfig';
 
 // Assets
 import viewport from '../assets/viewportSizes';
@@ -51,7 +53,7 @@ const StyledDemoBtnCont = styled.div`
 
 function Cont1({ className }) {
   const createAccount = () => {
-    console.log('account created!');
+    signInWithRedirect(auth, provider);
   };
 
   return (
