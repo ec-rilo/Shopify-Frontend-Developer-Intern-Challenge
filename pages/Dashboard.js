@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // Components
 import StyledNav from '../components/Nav';
 import StyledContainer from '../components/Container';
-import StyledDashboardIntro from '../components/Intro2';
+import StyledDashboardIntro from '../components/DashboardIntro';
 import { StyledBtn2 } from '../components/Btns';
 import Card from '../components/Card';
 
