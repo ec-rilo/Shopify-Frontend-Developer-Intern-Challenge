@@ -5,6 +5,7 @@ import StyledNav from '../components/Nav';
 import StyledContainer from '../components/Container';
 import StyledLogoIntro2 from '../components/Intro2';
 import { StyledBtn2 } from '../components/Btns';
+import Card from '../components/Card';
 
 /* ----------- UpperContainer Content ----------- */
 
@@ -94,12 +95,64 @@ const StyledSubmitBtnCont = styled.div`
   justify-content: flex-end;
 `;
 
+function ResponsesCont({ className }) {
+  return (
+    <div className={className}>
+      <StyledPromptHeaderCont>
+        <StyledRespHeaderCont>
+          <StyledH2>Responses</StyledH2>
+          <StyledP>1,023 responses</StyledP>
+        </StyledRespHeaderCont>
+        <StyledSelect name="responses-filter" id="responses-filter">
+          <StyledOption value="most recent">Most recent</StyledOption>
+          <StyledOption value="text-curie-001">text-curie-001</StyledOption>
+          <StyledOption value="text-davinci-002">text-davinci-002</StyledOption>
+          <StyledOption value="text-babbage-001">text-babbage-001</StyledOption>
+          <StyledOption value="text-ada-001">text-ada-001</StyledOption>
+        </StyledSelect>
+      </StyledPromptHeaderCont>
+
+      <StyledRespCardsCont>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </StyledRespCardsCont>
+    </div>
+  );
+}
+
+const StyledResponsesCont = styled(ResponsesCont)`
+
+`;
+
+const StyledRespHeaderCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const StyledP = styled.p`
+  color: var(--clr-waikawa-grey);
+  font-family: var(--fnt-medium);
+`;
+
+const StyledRespCardsCont = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  gap: 50px;
+  justify-content: space-between;
+`;
+
 function LowerCont({ className }) {
   return (
     <div className={className}>
       <StyledContainer fullPadding>
         <IntroCont>
           <StyledPromptCont />
+          <StyledResponsesCont />
         </IntroCont>
       </StyledContainer>
     </div>
