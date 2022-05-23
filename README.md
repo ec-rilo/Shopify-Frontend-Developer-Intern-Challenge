@@ -20,7 +20,7 @@ I'm doing the Shopify Front End Developer Intern Challenge based on the [documen
 
 But back to the project! I really wanted to push the scope of this project and not just tackle the bare minimums. So I took the bare minimums and expanded on it with some extra features. And of course a gorgeous UI to wrap it up!
 
-Ultimately I really wanted to showoff my front-end skills and I hope This project shows that.
+Ultimately I really wanted to showoff my front-end skills and I hope this project shows that.
 
 If you want to take a deep dive of what my thought process was throughout the project take a look at my journal entries! They can all be found on this [document in Notion](https://bow-mall-4ed.notion.site/Shopify-FEC-Journal-7b7e0e1b147647d6a8843284d7705554).
 
