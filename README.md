@@ -13,7 +13,7 @@
     <img src="https://i.imgur.com/YgUQmDV.png">
 </div>
 
-<h4 align="center">Front End Developer Intern Challenge for Shopify.</h4>
+<h4 align="center">Front End Developer Intern Challenge for Shopify using <a href="https://beta.openai.com/overview" target="_blank">OpenAI</a>.</h4>
 
 ## Motivation and Story
 I'm doing the Shopify Front End Developer Intern Challenge based on the [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). I wanted to go above and beyond for this project. It's still in progress since I recently found out about it after graduating from my software engineering immersive (graduated 05/20/2022 😊).
