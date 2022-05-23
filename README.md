@@ -16,7 +16,7 @@
 <h4 align="center">Front End Developer Intern Challenge for Shopify.</h4>
 
 ## Motivation and Story
-I wanted to create a full-stack application that I was proud of where I can showcase the breath of my full-stack knowledge while also being passionate about the project. After working with a client on Rumble before I wasn't satisifed although the client was! So I set off to create the Rumble we can see here. Being a fully responsive website with a mobile first approach, Rumble is the tinder for food! Say goodbye to the "I don't know what to eat" conversations and check out rumble! 
+
 
 ## Getting Started
 
