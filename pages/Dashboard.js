@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // Components
 import StyledNav from '../components/Nav';
 import StyledContainer from '../components/Container';
-import StyledLogoIntro2 from '../components/Intro2';
+import StyledDashboardIntro from '../components/Intro2';
 import { StyledBtn2 } from '../components/Btns';
 import Card from '../components/Card';
 
@@ -24,7 +24,7 @@ function UpperCont({ className }) {
       <StyledContainer fullPadding>
         <StyledNav />
         <IntroCont>
-          <StyledLogoIntro2 />
+          <StyledDashboardIntro />
         </IntroCont>
       </StyledContainer>
     </div>
