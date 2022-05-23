@@ -16,7 +16,15 @@
 <h4 align="center">Front End Developer Intern Challenge for Shopify.</h4>
 
 ## Motivation and Story
+I'm doing the Shopify Front End Developer Intern Challenge based on the [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). I wanted to go above and beyond for this project. It's still in progress since I recently found out about it after graduating from my software engineering immersive (graduated 05/20/2022 😊).
 
+But back to the project! I really wanted to push the scope of this project and not just tackle the bare minimums. So I took the bare minimums and expanded on it with some extra features. And of course a gorgeous UI to wrap it up!
+
+Ultimately I really wanted to showoff my front-end skills and I hope This project shows that.
+
+If you want to take a deep dive of what my thought process was throughout the project take a look at my journal entries! They can all be found on this [document in Notion](https://bow-mall-4ed.notion.site/Shopify-FEC-Journal-7b7e0e1b147647d6a8843284d7705554).
+
+And for the Setup I went with I also documented it in another [Notion page](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae).
 
 ## Getting Started
 
