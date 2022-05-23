@@ -10,7 +10,7 @@
 <h1 align="center">Fun with GPT-3</h1>
 
 <div align="center" width="100%">
-    <img src="#">
+    <img src="https://i.imgur.com/YgUQmDV.png">
 </div>
 
 <h4 align="center">Front End Developer Intern Challenge for Shopify.</h4>
