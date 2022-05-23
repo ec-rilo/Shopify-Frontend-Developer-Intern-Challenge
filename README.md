@@ -26,6 +26,10 @@ If you want to take a deep dive of what my thought process was throughout the pr
 
 And for the Setup I went with I also documented it in another [Notion page](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae).
 
+I also have [Figma](https://www.figma.com/file/ShVEeMRQNP7EvTQ3FH4Qdn/Fun-with-GPT-3?node-id=0%3A1) where you can see the mocks I created.
+
+And I have [Trello](https://trello.com/invite/b/CoLSj3Vh/af796150087882cc21203b29f369fe4e/fun-with-gpt-3) where you can see the ticket progression.
+
 <br />
 
 ## Features
