@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -33,6 +33,16 @@ function UserNameCont({ className, userName }) {
       console.error(`Failed to sign out user: ${err}`);
     });
   }
+
+  // Sets the intervals where the sign out button appears and disappears.
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWelcomeVisible((prev) => !prev);
+    }, 30000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <div className={className}>
