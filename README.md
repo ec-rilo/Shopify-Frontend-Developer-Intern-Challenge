@@ -26,6 +26,8 @@ If you want to take a deep dive of what my thought process was throughout the pr
 
 And for the Setup I went with I also documented it in another [Notion page](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae).
 
+<br />
+
 ## Features
 
 **Feature 1**
@@ -34,6 +36,8 @@ Description here
 
 **Feature 2**
 Description here
+
+<br />
 
 ## Getting Started
 
