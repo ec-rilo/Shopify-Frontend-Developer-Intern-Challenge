@@ -26,10 +26,10 @@
   --fnt-dark: 'Roboto-Black';
 
   /* -------------- Colors -------------- */
-  --clr-purple-blue: '#6b2bd9';
-  --clr-white: '#FFFFFF';
-  --clr-black: '#000000';
-  --clr-porcelain: '#F1F2F7';
-  --clr-waikawa-grey: '#6A6F95';
-  --oslo-grey: '#8D8D8E';
+  --clr-purple-blue: #6b2bd9;
+  --clr-white: #FFFFFF;
+  --clr-black: #000000;
+  --clr-porcelain: #F1F2F7;
+  --clr-waikawa-grey: #6A6F95;
+  --oslo-grey: #8D8D8E;
 }
