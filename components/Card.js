@@ -2,6 +2,9 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import moment from 'moment';
 
+// Components
+import StyledEngineCard from './EngineCard';
+
 function HeaderCont({ className, name, timeStamp, imgSrc }) {
   return (
     <div className={className}>
@@ -99,26 +102,6 @@ const StyledRespCont = styled(RespCont)`
   padding: 20px;
 `;
 
-function EngineCardCont({ className, engineName }) {
-  return (
-    <div className={className}>
-      <StyledEngineCard>{engineName} engine</StyledEngineCard>
-    </div>
-  );
-}
-
-const StyledEngineCardCont = styled(EngineCardCont)`
-  display: flex;
-  justify-content: flex-start;
-`;
-
-const StyledEngineCard = styled.p`
-  background-color: red;
-  padding: 10px;
-  border-radius: 15px;
-  font-family: var(--fnt-bold);
-`;
-
 function Card({ className, cardData }) {
   return (
     <div className={className}>
@@ -129,7 +112,7 @@ function Card({ className, cardData }) {
       />
       <StyledPromptCont prompt={cardData.userInput} />
       <StyledRespCont aiResponse={cardData.choices[0].text} />
-      <StyledEngineCardCont engineName={cardData.model} />
+      <StyledEngineCard engineName={cardData.model} />
     </div>
   );
 }
