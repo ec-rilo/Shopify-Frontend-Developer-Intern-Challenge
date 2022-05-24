@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+// Assets
+import { openai, requestOpenAI } from './api/openAi';
+
 // Firebase
 import { auth } from '../firebaseConfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -54,11 +57,24 @@ function UpperCont({ className }) {
 /* ----------- LowerContainer Content ----------- */
 
 function PromptCont({ className }) {
+  const [userRequest, setUserRequest] = useState('');
+  const [engine, setEngine] = useState('text-curie-001');
+
+  const makeRequest = (text) => {
+    requestOpenAI(engine, text)
+      .then((response) => {
+        console.log('response: ', response);
+      })
+      .catch((err) => {
+        console.error('request failed: ', err);
+      });
+  }
+
   return (
     <div className={className}>
       <StyledPromptHeaderCont>
         <StyledH2>Enter prompt</StyledH2>
-        <StyledSelect name="engines" id="engines">
+        <StyledSelect name="engines" id="engines" onChange={(e) => setEngine(e.target.value)}>
           <StyledOption value="text-curie-001">text-curie-001</StyledOption>
           <StyledOption value="text-davinci-002">text-davinci-002</StyledOption>
           <StyledOption value="text-babbage-001">text-babbage-001</StyledOption>
@@ -66,10 +82,12 @@ function PromptCont({ className }) {
         </StyledSelect>
       </StyledPromptHeaderCont>
       <div>
-        <StyledTextArea />
+        <StyledTextArea onChange={(e) => setUserRequest(e.target.value)}/>
       </div>
       <StyledSubmitBtnCont>
-        <StyledBtn2 clickHandler={() => console.log('asdf')} text="Submit"/>
+        <StyledBtn2 clickHandler={() => makeRequest(userRequest)}
+        text="Submit"
+      />
       </StyledSubmitBtnCont>
     </div>
   );
