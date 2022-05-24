@@ -1,17 +1,14 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import moment from 'moment';
 
-// Assets
-import aiIcon from '../public/images/ai-icon.jpeg';
-
-
-function HeaderCont({ className }) {
+function HeaderCont({ className, name, timeStamp, imgSrc }) {
   return (
     <div className={className}>
-      <StyledImgCont />
+      <StyledImgCont imgSrc={imgSrc} />
       <StyledHeadTextCont>
-        <StyledName>Lorem Ipsum</StyledName>
-        <StyledTimestamp>3 hrs ago</StyledTimestamp>
+        <StyledName>{name}</StyledName>
+        <StyledTimestamp>{moment.unix(timeStamp).fromNow()}</StyledTimestamp>
       </StyledHeadTextCont>
     </div>
   );
@@ -23,10 +20,10 @@ const StyledHeaderCont = styled(HeaderCont)`
   gap: 15px;
 `;
 
-function ImgCont({ className }) {
+function ImgCont({ className, imgSrc }) {
   return (
     <div className={className}>
-      <Image src={aiIcon} alt="" layout="fill" />
+      <Image src={imgSrc} alt="" layout="fill" />
     </div>
   );
 }
@@ -56,11 +53,11 @@ const StyledTimestamp = styled.p`
   font-family: var(--fnt-medium);
 `;
 
-function PromptCont ({ className }) {
+function PromptCont ({ className, prompt }) {
   return (
     <div className={className}>
-      <StyledHeading secondary>OpenAI Response</StyledHeading>
-      <StyledText secondary>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</StyledText>
+      <StyledHeading secondary>Prompt</StyledHeading>
+      <StyledText secondary>{prompt}</StyledText>
     </div>
   );
 }
@@ -78,11 +75,11 @@ const StyledText = styled.p`
   ${({ secondary }) => secondary && 'color: var(--clr-white);'}
 `;
 
-function RespCont({ className }) {
+function RespCont({ className, aiResponse }) {
   return (
     <div className={className}>
       <StyledHeading>OpenAI Response</StyledHeading>
-      <StyledText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</StyledText>
+      <StyledText>{aiResponse}</StyledText>
     </div>
   );
 }
@@ -102,10 +99,10 @@ const StyledRespCont = styled(RespCont)`
   padding: 20px;
 `;
 
-function EngineCardCont({ className }) {
+function EngineCardCont({ className, engineName }) {
   return (
     <div className={className}>
-      <StyledEngineCard>text-davinci-002 Engine</StyledEngineCard>
+      <StyledEngineCard>{engineName} engine</StyledEngineCard>
     </div>
   );
 }
@@ -122,13 +119,17 @@ const StyledEngineCard = styled.p`
   font-family: var(--fnt-bold);
 `;
 
-function Card({ className }) {
+function Card({ className, cardData }) {
   return (
     <div className={className}>
-      <StyledHeaderCont />
-      <StyledPromptCont />
-      <StyledRespCont />
-      <StyledEngineCardCont />
+      <StyledHeaderCont
+        name={cardData.userName}
+        timeStamp={cardData.created}
+        imgSrc={cardData.userImg}
+      />
+      <StyledPromptCont prompt={cardData.userInput} />
+      <StyledRespCont aiResponse={cardData.choices[0].text} />
+      <StyledEngineCardCont engineName={cardData.model} />
     </div>
   );
 }
@@ -141,6 +142,7 @@ const StyledCard = styled(Card)`
   padding: 20px;
   border-radius: 15px;
   max-width: 550px;
+  width: 100%;
 `;
 
 export default StyledCard;
