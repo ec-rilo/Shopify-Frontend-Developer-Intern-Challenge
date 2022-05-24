@@ -139,7 +139,7 @@ function ResponsesCont({ className, cards }) {
       <StyledPromptHeaderCont>
         <StyledRespHeaderCont>
           <StyledH2>Responses</StyledH2>
-          <StyledP>1,023 responses</StyledP>
+          <StyledP>{cards.length} responses</StyledP>
         </StyledRespHeaderCont>
         <StyledSelect name="responses-filter" id="responses-filter">
           <StyledOption value="most recent">Most recent</StyledOption>
