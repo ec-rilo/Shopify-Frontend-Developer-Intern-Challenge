@@ -133,7 +133,7 @@ const StyledSubmitBtnCont = styled.div`
   justify-content: flex-end;
 `;
 
-function ResponsesCont({ className }) {
+function ResponsesCont({ className, cards }) {
   return (
     <div className={className}>
       <StyledPromptHeaderCont>
@@ -151,11 +151,9 @@ function ResponsesCont({ className }) {
       </StyledPromptHeaderCont>
 
       <StyledRespCardsCont>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {cards.map((cardObj) => (
+          <Card key={cardObj.id} cardData={cardObj} />
+        ))}
       </StyledRespCardsCont>
     </div>
   );
@@ -190,7 +188,7 @@ function LowerCont({ className, cards, addCard }) {
       <StyledContainer fullPadding>
         <IntroCont>
           <StyledPromptCont addCard={addCard} />
-          <StyledResponsesCont />
+          <StyledResponsesCont cards={cards} />
         </IntroCont>
       </StyledContainer>
     </div>
@@ -212,9 +210,11 @@ function Dashboard({ className }) {
 
     newCardData.userName = user.displayName;
     newCardData.userInput = userInput;
+    newCardData.userImg = user.photoURL;
 
-    const newCards = cards.slice();
+    let newCards = cards.slice();
     newCards.push(newCardData);
+    newCards = newCards.reverse();
     setCards(newCards);
   }
 
