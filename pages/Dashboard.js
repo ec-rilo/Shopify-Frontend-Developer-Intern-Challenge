@@ -56,14 +56,14 @@ function UpperCont({ className }) {
 
 /* ----------- LowerContainer Content ----------- */
 
-function PromptCont({ className }) {
+function PromptCont({ className, addCard }) {
   const [userRequest, setUserRequest] = useState('');
   const [engine, setEngine] = useState('text-curie-001');
 
-  const makeRequest = (text) => {
-    requestOpenAI(engine, text)
+  const makeRequest = () => {
+    requestOpenAI(engine, userRequest)
       .then((response) => {
-        console.log('response: ', response);
+        addCard(response, userRequest);
       })
       .catch((err) => {
         console.error('request failed: ', err);
@@ -85,7 +85,7 @@ function PromptCont({ className }) {
         <StyledTextArea onChange={(e) => setUserRequest(e.target.value)}/>
       </div>
       <StyledSubmitBtnCont>
-        <StyledBtn2 clickHandler={() => makeRequest(userRequest)}
+        <StyledBtn2 clickHandler={() => makeRequest()}
         text="Submit"
       />
       </StyledSubmitBtnCont>
@@ -184,12 +184,12 @@ const StyledRespCardsCont = styled.ul`
   justify-content: space-between;
 `;
 
-function LowerCont({ className }) {
+function LowerCont({ className, cards, addCard }) {
   return (
     <div className={className}>
       <StyledContainer fullPadding>
         <IntroCont>
-          <StyledPromptCont />
+          <StyledPromptCont addCard={addCard} />
           <StyledResponsesCont />
         </IntroCont>
       </StyledContainer>
@@ -204,10 +204,24 @@ const StyledLowerCont = styled(LowerCont)`
 /* ----------- Dashboard Content ----------- */
 
 function Dashboard({ className }) {
+  const [user, loading, error] = useAuthState(auth);
+  const [cards, setCards] = useState([]);
+
+  const addCard = (cardData, userInput) => {
+    const newCardData = { ...cardData };
+
+    newCardData.userName = user.displayName;
+    newCardData.userInput = userInput;
+
+    const newCards = cards.slice();
+    newCards.push(newCardData);
+    setCards(newCards);
+  }
+
   return (
     <div className={className}>
       <StyledUpperCont />
-      <StyledLowerCont />
+      <StyledLowerCont cards={cards} addCard={addCard} />
     </div>
   );
 }
