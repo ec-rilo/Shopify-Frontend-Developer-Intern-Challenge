@@ -213,8 +213,7 @@ function Dashboard({ className }) {
     newCardData.userImg = user.photoURL;
 
     let newCards = cards.slice();
-    newCards.push(newCardData);
-    newCards = newCards.reverse();
+    newCards.unshift(newCardData);
     setCards(newCards);
   }
 
