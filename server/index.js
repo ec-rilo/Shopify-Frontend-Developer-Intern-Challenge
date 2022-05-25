@@ -9,6 +9,14 @@ const nextHandler = nextApp.getRequestHandler()
 nextApp.prepare().then(() => {
   const app = express();
 
+  // middleware
+  app.use(express.json());
+
+  // routers
+  const usersRouter = require('./usersRouter');
+
+  app.use('/users', usersRouter);
+
   // socket.io
   const server = require('http').createServer(app);
   const io = require('socket.io')(server);
