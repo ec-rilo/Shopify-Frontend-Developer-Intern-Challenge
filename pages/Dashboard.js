@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 // Assets
 import { openai, requestOpenAI } from './api/openAi';
+import server from './api/server';
 
 // Firebase
 import { auth } from '../firebaseConfig';
@@ -56,19 +57,22 @@ function UpperCont({ className }) {
 
 /* ----------- LowerContainer Content ----------- */
 
-function PromptCont({ className, addCard }) {
+function PromptCont({ className, addCard, user }) {
   const [userRequest, setUserRequest] = useState('');
   const [engine, setEngine] = useState('text-curie-001');
+  // const socket = io();
 
-  const makeRequest = () => {
-    requestOpenAI(engine, userRequest)
+  const getAIResponse = (request) => (
+    new Promise((resolve, reject) => {
+      requestOpenAI(engine, request)
       .then((response) => {
-        addCard(response, userRequest);
+        resolve(response)
       })
       .catch((err) => {
-        console.error('request failed: ', err);
+        reject(err);
       });
-  }
+    })
+  );
 
   return (
     <div className={className}>
@@ -85,9 +89,27 @@ function PromptCont({ className, addCard }) {
         <StyledTextArea onChange={(e) => setUserRequest(e.target.value)}/>
       </div>
       <StyledSubmitBtnCont>
-        <StyledBtn2 clickHandler={() => makeRequest()}
-        text="Submit"
-      />
+        <StyledBtn2
+          clickHandler={() => {
+            getAIResponse(userRequest)
+              .then((response) => {
+                const cardData = {
+                  id: response.id,
+                  userEmail: user.email,
+                  prompt: userRequest,
+                  aiResponse: response.choices[0].text,
+                  timeStamp: response.created,
+                  engineModel: response.model,
+                };
+                server.addCard(cardData);
+                addCard(response, userRequest);
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          }}
+          text="Submit"
+        />
       </StyledSubmitBtnCont>
     </div>
   );
@@ -182,12 +204,12 @@ const StyledRespCardsCont = styled.ul`
   justify-content: space-between;
 `;
 
-function LowerCont({ className, cards, addCard }) {
+function LowerCont({ className, cards, addCard, user }) {
   return (
     <div className={className}>
       <StyledContainer fullPadding>
         <IntroCont>
-          <StyledPromptCont addCard={addCard} />
+          <StyledPromptCont addCard={addCard} user={user} />
           <StyledResponsesCont cards={cards} />
         </IntroCont>
       </StyledContainer>
@@ -203,6 +225,7 @@ const StyledLowerCont = styled(LowerCont)`
 
 function Dashboard({ className }) {
   const [user, loading, error] = useAuthState(auth);
+  const [userData, setUserData] = useState('');
   const [cards, setCards] = useState([]);
 
   const addCard = (cardData, userInput) => {
@@ -217,10 +240,20 @@ function Dashboard({ className }) {
     setCards(newCards);
   }
 
+  useEffect(() => {
+    if (user) {
+      setUserData({
+        email: user.email,
+        name: user.displayName,
+        photoURL: user.photoURL
+      });
+    }
+  }, [user]);
+
   return (
     <div className={className}>
       <StyledUpperCont />
-      <StyledLowerCont cards={cards} addCard={addCard} />
+      <StyledLowerCont cards={cards} addCard={addCard} user={userData} />
     </div>
   );
 }
