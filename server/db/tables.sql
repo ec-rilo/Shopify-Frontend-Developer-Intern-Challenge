@@ -1,7 +1,20 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS card_data;
 
 CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(50) UNIQUE NOT NULL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   photo_url VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS card_data (
+  id VARCHAR(50) UNIQUE NOT NULL PRIMARY KEY,
+  user_email VARCHAR(50) NOT NULL,
+  prompt VARCHAR(500) NOT NULL,
+  ai_response VARCHAR(500) NOT NULL,
+  time_stamp BIGINT NOT NULL,
+  engine_model VARCHAR(25) NOT NULL,
+  CONSTRAINT fk_user_email
+    FOREIGN KEY(user_email)
+      REFERENCES users(email)
 );
