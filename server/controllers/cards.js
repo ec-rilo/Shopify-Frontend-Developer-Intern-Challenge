@@ -12,6 +12,16 @@ module.exports = {
       .catch((err) => {
         res.send(err);
       });
+  },
+
+  getAllFiltered: (req, res) => {
+    models.cards.getAllFiltered()
+      .then((response) => {
+        res.send(response);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
 
 };

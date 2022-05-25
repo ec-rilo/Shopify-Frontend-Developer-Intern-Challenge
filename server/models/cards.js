@@ -28,6 +28,20 @@ module.exports = {
       .catch((err) => {
         return err;
       });
+  },
+
+  getAllFiltered: () => {
+    const query = `
+      SELECT * FROM card_data ORDER BY time_stamp DESC;
+    `;
+
+    return pool.query(query)
+      .then((response) => {
+        return response.rows
+      })
+      .catch((err) => {
+        return err;
+      });
   }
 
 };
