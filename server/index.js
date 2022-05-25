@@ -14,8 +14,10 @@ nextApp.prepare().then(() => {
 
   // routers
   const usersRouter = require('./usersRouter');
+  const cardsRouter = require('./cardsRouter');
 
   app.use('/users', usersRouter);
+  app.use('/cards', cardsRouter);
 
   // socket.io
   const server = require('http').createServer(app);
