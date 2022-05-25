@@ -4,13 +4,8 @@ const { Pool } = require("pg");
 
 const io = new Server();
 
-const pool = new Pool({
-  user: "postgres",
-  host: 'localhost',
-  database: "fun_with_gpt_3",
-  password: "123456",
-  port: 5432,
-});
+const pgConfig = require('./pgConfig');
+const pool = new Pool(pgConfig);
 
 
 module.exports = {
