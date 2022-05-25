@@ -1,8 +1,5 @@
 const { Server } = require("socket.io");
-const { createAdapter } = require("@socket.io/postgres-adapter");
 const { Pool } = require("pg");
-
-const io = new Server();
 
 const pgConfig = require('./pgConfig');
 const pool = new Pool(pgConfig);
@@ -28,6 +25,3 @@ module.exports = {
   }
 
 };
-
-io.adapter(createAdapter(pool));
-io.listen(process.env.IO_PORT);
