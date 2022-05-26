@@ -106,13 +106,13 @@ function Card({ className, cardData }) {
   return (
     <div className={className}>
       <StyledHeaderCont
-        name={cardData.userName}
-        timeStamp={cardData.created}
-        imgSrc={cardData.userImg}
+        name={cardData.name}
+        timeStamp={cardData.time_stamp}
+        imgSrc={cardData.photo_url}
       />
-      <StyledPromptCont prompt={cardData.userInput} />
-      <StyledRespCont aiResponse={cardData.choices[0].text} />
-      <StyledEngineCard engineName={cardData.model} />
+      <StyledPromptCont prompt={cardData.prompt} />
+      <StyledRespCont aiResponse={cardData.ai_response} />
+      <StyledEngineCard engineName={cardData.engine_model} />
     </div>
   );
 }
