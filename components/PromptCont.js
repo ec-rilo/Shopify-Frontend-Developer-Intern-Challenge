@@ -78,7 +78,7 @@ function PromptCont({ className, addCard, user }) {
                 };
                 server.addCard(cardData)
                   .then(() => {
-                    socket.emit('cardPosted');
+                    socket.emit('cardPosted', 'most recent');
                   })
                   .catch((err) => {
                     console.error('post failed!: ', err);
