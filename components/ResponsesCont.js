@@ -1,4 +1,8 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
+// Assets
+import { io } from "socket.io-client";
 
 // Components
 import Card from './Card';
@@ -36,6 +40,15 @@ const StyledH2 = styled.h2`
 `;
 
 function ResponsesCont({ className, cards }) {
+  const [selectedFilter, setSelectedFilter] = useState('most recent');
+
+
+
+  useEffect(() => {
+    const socket = io();
+    socket.emit('cardPosted', selectedFilter);
+  }, [selectedFilter]);
+
   return (
     <div className={className}>
       <StyledHeaderCont>
@@ -43,7 +56,11 @@ function ResponsesCont({ className, cards }) {
           <StyledH2>Responses</StyledH2>
           <StyledP>{cards.length} responses</StyledP>
         </StyledTitleCont>
-        <StyledSelect name="responses-filter" id="responses-filter">
+        <StyledSelect
+          name="responses-filter"
+          id="responses-filter"
+          onChange={(e) => setSelectedFilter(e.target.value)}
+        >
           <StyledOption value="most recent">Most recent</StyledOption>
           <StyledOption value="text-curie-001">text-curie-001</StyledOption>
           <StyledOption value="text-davinci-002">text-davinci-002</StyledOption>
