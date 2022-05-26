@@ -19,15 +19,6 @@ function Dashboard({ className }) {
   const [cards, setCards] = useState([]);
   const [userName, setUserName] = useState('');
 
-  // Loads cards on load.
-  useEffect(() => {
-    const socket = io();
-    socket.emit('cardPosted');
-    socket.once('allCardsDesc', (newCards) => {
-      setCards(newCards);
-    });
-  }, []);
-
   // Loads user information
   useEffect(() => {
     if (user) {
