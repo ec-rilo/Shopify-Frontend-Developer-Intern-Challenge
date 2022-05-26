@@ -16,7 +16,12 @@ const IntroCont = styled.div`
 
 const getFirstName = (name) => {
   const whitespaceIndex = name.indexOf(' ');
-  const firstName = name.slice(0, whitespaceIndex);
+  let firstName = '';
+  if (whitespaceIndex === -1) {
+    firstName = name;
+  } else {
+    firstName = name.slice(0, whitespaceIndex);
+  }
   return firstName;
 };
 
