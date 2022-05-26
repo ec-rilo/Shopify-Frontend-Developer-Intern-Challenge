@@ -66,8 +66,10 @@ function Cont1({ className }) {
           <StyledLoginIntro />
 
           <StyledBtnCont>
-            <StyledBtn1 clickHandler={createAccount} text="Create account" primary/>
-            <StyledBtn1 clickHandler={createAccount} text="Sign in" />
+            <StyledBtn1 clickHandler={createAccount} text="Sign in with Google" primary/>
+            <a href="https://github.com/ec-rilo/fun-with-gpt-3" target="_blank" rel="noreferrer">
+              <StyledBtn1 clickHandler={() => {}} text="Visit GitHub repository" />
+            </a>
           </StyledBtnCont>
         </div>
 
