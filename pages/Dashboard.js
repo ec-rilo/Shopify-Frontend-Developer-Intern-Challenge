@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // Assets
 import { openai, requestOpenAI } from './api/openAi';
 import server from './api/server';
+import { io } from "socket.io-client";
 
 // Firebase
 import { auth } from '../firebaseConfig';
@@ -60,7 +61,7 @@ function UpperCont({ className }) {
 function PromptCont({ className, addCard, user }) {
   const [userRequest, setUserRequest] = useState('');
   const [engine, setEngine] = useState('text-curie-001');
-  // const socket = io();
+  const socket = io();
 
   const getAIResponse = (request) => (
     new Promise((resolve, reject) => {
@@ -101,7 +102,14 @@ function PromptCont({ className, addCard, user }) {
                   timeStamp: response.created,
                   engineModel: response.model,
                 };
-                server.addCard(cardData);
+                server.addCard(cardData)
+                  .then(() => {
+                    socket.emit('cardPosted');
+                  })
+                  .catch((err) => {
+                    console.error('post failed!: ', err);
+                  });
+
                 addCard(response, userRequest);
               })
               .catch((err) => {
@@ -228,6 +236,23 @@ function Dashboard({ className }) {
   const [userData, setUserData] = useState('');
   const [cards, setCards] = useState([]);
 
+
+  // Loads cards on load.
+  useEffect(() => {
+    const socket = io();
+    socket.emit('cardPosted');
+    socket.once('allCardsDesc', (newCards) => {
+      setCards(newCards);
+    })
+  }, []);
+
+  useEffect(() => {
+    const socket = io();
+    socket.on('allCardsDesc', (newCards) => {
+      setCards(newCards);
+    })
+  }, [])
+
   const addCard = (cardData, userInput) => {
     const newCardData = { ...cardData };
 
@@ -237,7 +262,7 @@ function Dashboard({ className }) {
 
     let newCards = cards.slice();
     newCards.unshift(newCardData);
-    setCards(newCards);
+    // setCards(newCards);
   }
 
   useEffect(() => {
