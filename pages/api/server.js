@@ -16,7 +16,7 @@ const server = {
       });
   },
 
-  addCard: (card) => {
+  addCard: (card) => new Promise ((resolve, reject) => {
     axios.post('cards/card', {
       id: card.id,
       userEmail: card.userEmail,
@@ -26,12 +26,12 @@ const server = {
       engineModel: card.engineModel,
     })
       .then((response) => {
-        return response;
+        resolve(response);
       })
       .catch((err) => {
-        return err;
+        reject(err);
       });
-  }
+  }),
 
 }
 
