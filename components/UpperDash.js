@@ -4,10 +4,6 @@ import styled from 'styled-components';
 // Assets
 import { io } from "socket.io-client";
 
-// Firebase
-import { auth } from '../firebaseConfig';
-import { useAuthState } from 'react-firebase-hooks/auth';
-
 // Components
 import StyledDashboardIntro from './DashboardIntro';
 import StyledNav from './Nav';
@@ -24,20 +20,13 @@ const getFirstName = (name) => {
   return firstName;
 };
 
-function UpperDash({ className }) {
-  const [user, loading, error] = useAuthState(auth);
-  const [firstName, setFirstName] = useState('');
-
-  useEffect(() => {
-    if (user) {
-      setFirstName(getFirstName(user.displayName));
-    }
-  }, [user]);
+function UpperDash({ className, userName }) {
+  userName = getFirstName(userName);
 
   return (
     <div className={className}>
       <StyledContainer fullPadding>
-        <StyledNav dashboard userName={firstName}/>
+        <StyledNav dashboard userName={userName}/>
         <IntroCont>
           <StyledDashboardIntro />
         </IntroCont>
