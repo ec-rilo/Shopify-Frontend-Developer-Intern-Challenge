@@ -9,6 +9,9 @@ const nextHandler = nextApp.getRequestHandler()
 nextApp.prepare().then(() => {
   const app = express();
 
+  // models
+  const models = require('./models/models');
+
   // middleware
   app.use(express.json());
 
@@ -21,10 +24,26 @@ nextApp.prepare().then(() => {
 
   // socket.io
   const server = require('http').createServer(app);
-  const io = require('socket.io')(server);
+  const io = require('socket.io')(server, {
+    cors: {
+      origin: "http://localhost:8080",
+      methods: ["GET", "POST"]
+    }
+  });
 
   io.on('connection', (socket) => {
+    socket.on('cardPosted', (response) => {
+      models.cards.getAllFiltered()
+        .then((response) => {
+          io.sockets.emit('allCardsDesc', response);
+        })
+        .catch(() => {
+          console.error('failed to get all filtered cards');
+        });
+    });
+
     socket.on('disconnect', () => {
+      console.log('disconnected');
     });
   });
 
