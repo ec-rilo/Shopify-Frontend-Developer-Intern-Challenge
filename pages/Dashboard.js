@@ -9,51 +9,9 @@ import { auth } from '../firebaseConfig';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 // Components
-import StyledNav from '../components/Nav';
 import StyledContainer from '../components/Container';
-import StyledDashboardIntro from '../components/DashboardIntro';
 import StyledLowerDash from '../components/LowerDash';
-
-/* ----------- UpperContainer Content ----------- */
-
-const IntroCont = styled.div`
-  max-width: 1280px;
-  margin: auto;
-`;
-
-const StyledUpperCont = styled(UpperCont)`
-  background-color: var(--clr-porcelain);
-`;
-
-const getFirstName = (name) => {
-  const whitespaceIndex = name.indexOf(' ');
-  const firstName = name.slice(0, whitespaceIndex);
-  return firstName;
-};
-
-function UpperCont({ className }) {
-  const [user, loading, error] = useAuthState(auth);
-  const [firstName, setFirstName] = useState('');
-
-  useEffect(() => {
-    if (user) {
-      setFirstName(getFirstName(user.displayName));
-    }
-  }, [user]);
-
-  return (
-    <div className={className}>
-      <StyledContainer fullPadding>
-        <StyledNav dashboard userName={firstName}/>
-        <IntroCont>
-          <StyledDashboardIntro />
-        </IntroCont>
-      </StyledContainer>
-    </div>
-  );
-}
-
-/* ----------- Dashboard Content ----------- */
+import StyledUpperDash from '../components/UpperDash';
 
 function Dashboard({ className }) {
   const [user, loading, error] = useAuthState(auth);
@@ -101,7 +59,7 @@ function Dashboard({ className }) {
 
   return (
     <div className={className}>
-      <StyledUpperCont />
+      <StyledUpperDash />
       <StyledLowerDash cards={cards} addCard={addCard} user={userData} />
     </div>
   );
