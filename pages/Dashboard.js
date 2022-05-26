@@ -17,7 +17,7 @@ function Dashboard({ className }) {
   const [user, loading, error] = useAuthState(auth);
   const [userData, setUserData] = useState('');
   const [cards, setCards] = useState([]);
-
+  const [userName, setUserName] = useState('');
 
   // Loads cards on load.
   useEffect(() => {
@@ -25,8 +25,15 @@ function Dashboard({ className }) {
     socket.emit('cardPosted');
     socket.once('allCardsDesc', (newCards) => {
       setCards(newCards);
-    })
+    });
   }, []);
+
+  // Loads user information
+  useEffect(() => {
+    if (user) {
+      setUserName(user.displayName);
+    }
+  }, [user]);
 
   useEffect(() => {
     const socket = io();
@@ -59,7 +66,7 @@ function Dashboard({ className }) {
 
   return (
     <div className={className}>
-      <StyledUpperDash />
+      <StyledUpperDash userName={userName} />
       <StyledLowerDash cards={cards} addCard={addCard} user={userData} />
     </div>
   );
