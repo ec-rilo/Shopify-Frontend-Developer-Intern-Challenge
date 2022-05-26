@@ -42,6 +42,24 @@ module.exports = {
       .catch((err) => {
         return err;
       });
+  },
+
+  getAllFilteredEngine: (engineName) => {
+    const query = `
+      SELECT * FROM card_data, users
+      WHERE card_data.engine_model = $1
+      ORDER BY card_data.time_stamp DESC;
+    `;
+
+    const input = [engineName];
+
+    return pool.query(query, input)
+      .then((response) => {
+        return response.rows
+      })
+      .catch((err) => {
+        return err;
+      });
   }
 
 };

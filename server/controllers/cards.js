@@ -22,6 +22,18 @@ module.exports = {
       .catch((err) => {
         res.send(err);
       });
+  },
+
+  getAllFilteredEngine: (req, res) => {
+    const engineName = req.query.engineName;
+
+    models.cards.getAllFilteredEngine(engineName)
+      .then((response) => {
+        res.send(response);
+      })
+      .catch((err) => {
+        res.send(err);
+      })
   }
 
 };
