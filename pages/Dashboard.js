@@ -29,7 +29,6 @@ function Dashboard({ className }) {
   useEffect(() => {
     const socket = io();
     socket.on('allCardsDesc', (newCards) => {
-      console.log('asdf')
       setCards(newCards);
     })
   }, [])
