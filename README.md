@@ -47,15 +47,18 @@ I wanted to showcase my skills and I hope this project shows that!
 
 ## Features
 
+- **Talk with OpenAI**
+  - With a choice of 4 engines, users are able to communicate with AI and be able to get 4 unique responses. Feel free to ask the AI anything!
+
 - **Live user question room**
+  - Users that are logged into the application can make questions to the OpenIO API and when they make the question it will be broadcasted to everyone using the application live!
+  - This was possible with Socket.io.
 
-Users that are logged into the application can make questions to the OpenIO API and when they make the question it will be broadcasted to everyone using the application live!
+- **Custom User Experience**
+  - With Firebase Authentication users are able to login to there custom account and be able to make unique posts to the application.
 
-This was possible with Socket.io.
-
-**Feature 2**
-Description here
-
+- **Demo App**
+  - The same application but NOT linked to a users google account or to others users on the application. The posts you make here to OpenAI are just yours and only viewable on your device.
 <br />
 
 ## Getting Started
