@@ -17,6 +17,16 @@
 
 <h4 align="center">Have fun with the <a href="https://beta.openai.com/overview" target="_blank">OpenAI</a> API and see what others are posting.</h4>
 
+<br />
+
+
+## Table of Content
+- [Motivation and Story](#motivation-and-story)
+- [Features](#features)
+- [Getting Started](#getting-started)
+
+<br />
+
 ## Motivation and Story
 This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project I went above and beyond the scope implementing a RESTful back-end along with a Demo version of the app that users can play with locally.
 
