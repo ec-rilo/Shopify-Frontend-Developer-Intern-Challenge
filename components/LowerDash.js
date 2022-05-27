@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-// Assets
-import { io } from "socket.io-client";
-
 // Components
 import StyledContainer from './Container';
 import StyledResponsesCont from './ResponsesCont';
