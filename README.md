@@ -26,13 +26,12 @@ So over a period of 5 days I was able to plan, mock, create and deploy this full
 
 I wanted to showcase my skills and I hope this project shows that!
 
-If you want to take a deep dive of what my thought process was throughout the project take a look at my **journal entries**! They can all be found on this [document in Notion](https://bow-mall-4ed.notion.site/Shopify-FEC-Journal-7b7e0e1b147647d6a8843284d7705554).
+**Extra Information**
 
-And for the **Setup** I went with I also documented it in another [Notion page](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae).
-
-I also have [Figma](https://www.figma.com/file/ShVEeMRQNP7EvTQ3FH4Qdn/Fun-with-GPT-3?node-id=0%3A1) where you can see the mocks I created.
-
-And I have [Trello](https://trello.com/invite/b/CoLSj3Vh/af796150087882cc21203b29f369fe4e/fun-with-gpt-3) where you can see the ticket progression.
+- [Journal Entries](https://bow-mall-4ed.notion.site/Shopify-FEC-Journal-7b7e0e1b147647d6a8843284d7705554)
+- [Figma Design](https://www.figma.com/file/ShVEeMRQNP7EvTQ3FH4Qdn/Fun-with-GPT-3?node-id=0%3A1)
+- [Setup](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae)
+- [Trello](https://trello.com/invite/b/CoLSj3Vh/af796150087882cc21203b29f369fe4e/fun-with-gpt-3)
 
 <br />
 
