@@ -17,32 +17,48 @@
 
 <h4 align="center">Have fun with the <a href="https://beta.openai.com/overview" target="_blank">OpenAI</a> API and see what others are posting.</h4>
 
+<br />
+
+
+## Table of Content
+- [Motivation and Story](#motivation-and-story)
+- [Features](#features)
+- [Getting Started](#getting-started)
+
+<br />
+
 ## Motivation and Story
-I'm doing the Shopify Front End Developer Intern Challenge based on the [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). I wanted to go above and beyond for this project. It's still in progress since I recently found out about it after graduating from my software engineering immersive (graduated 05/20/2022 😊).
+This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project I went above and beyond the scope implementing a RESTful back-end along with a Demo version of the app that users can play with locally.
 
-But back to the project! I really wanted to push the scope of this project and not just tackle the bare minimums. So I took the bare minimums and expanded on it with some extra features. And of course a gorgeous UI to wrap it up!
+The project wasn't able to be submitted to Shopify in time since I found out about it right after graduation and the deadline was two days after.(graduated 05/20/2022 😊). But, that didn't stop me from trying!
 
-Ultimately I really wanted to showoff my front-end skills and I hope this project shows that.
+So over a period of 5 days I was able to plan, mock, create and deploy this fully responsive application to AWS. Showing my skills across the full-stack.
 
-If you want to take a deep dive of what my thought process was throughout the project take a look at my journal entries! They can all be found on this [document in Notion](https://bow-mall-4ed.notion.site/Shopify-FEC-Journal-7b7e0e1b147647d6a8843284d7705554).
+I wanted to showcase my skills and I hope this project shows that!
 
-And for the Setup I went with I also documented it in another [Notion page](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae).
+**Extra Information**
 
-I also have [Figma](https://www.figma.com/file/ShVEeMRQNP7EvTQ3FH4Qdn/Fun-with-GPT-3?node-id=0%3A1) where you can see the mocks I created.
-
-And I have [Trello](https://trello.com/invite/b/CoLSj3Vh/af796150087882cc21203b29f369fe4e/fun-with-gpt-3) where you can see the ticket progression.
+- [Journal Entries](https://bow-mall-4ed.notion.site/Shopify-FEC-Journal-7b7e0e1b147647d6a8843284d7705554)
+- [Figma Design](https://www.figma.com/file/ShVEeMRQNP7EvTQ3FH4Qdn/Fun-with-GPT-3?node-id=0%3A1)
+- [Setup](https://bow-mall-4ed.notion.site/Shopify-Front-end-Challenge-606390a42e134ed790724992322f9aae)
+- [Trello](https://trello.com/invite/b/CoLSj3Vh/af796150087882cc21203b29f369fe4e/fun-with-gpt-3)
 
 <br />
 
 ## Features
 
-**Feature 1**
-Description here
+- **Talk with OpenAI**
+  - With a choice of 4 engines, users are able to communicate with AI and be able to get 4 unique responses. Feel free to ask the AI anything!
 
+- **Live user question room**
+  - Users that are logged into the application can make questions to the OpenIO API and when they make the question it will be broadcasted to everyone using the application live!
+  - This was possible with Socket.io.
 
-**Feature 2**
-Description here
+- **Custom User Experience**
+  - With Firebase Authentication users are able to login to there custom account and be able to make unique posts to the application.
 
+- **Demo App**
+  - The same application but NOT linked to a users google account or to others users on the application. The posts you make here to OpenAI are just yours and only viewable on your device.
 <br />
 
 ## Getting Started
