@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -52,9 +53,14 @@ const StyledDemoBtnCont = styled.div`
 `;
 
 function Cont1({ className }) {
+  const router = useRouter();
   const createAccount = () => {
     signInWithRedirect(auth, provider);
   };
+
+  const enterDemo = () => {
+    router.push('/DemoDashboard');
+  }
 
   return (
     <div className={className}>
@@ -76,7 +82,7 @@ function Cont1({ className }) {
       </LoginIntroCont>
 
       <StyledDemoBtnCont>
-        <StyledDemoBtn clickHandler={createAccount} text="Demo app"/>
+        <StyledDemoBtn clickHandler={enterDemo} text="Demo app"/>
       </StyledDemoBtnCont>
     </div>
   );
