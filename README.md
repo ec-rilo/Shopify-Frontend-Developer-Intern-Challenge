@@ -37,9 +37,11 @@ I wanted to showcase my skills and I hope this project shows that!
 
 ## Features
 
-**Feature 1**
-Description here
+- **Live user question room**
 
+Users that are logged into the application can make questions to the OpenIO API and when they make the question it will be broadcasted to everyone using the application live!
+
+This was possible with Socket.io.
 
 **Feature 2**
 Description here
