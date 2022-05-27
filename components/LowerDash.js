@@ -8,19 +8,34 @@ import { io } from "socket.io-client";
 import StyledContainer from './Container';
 import StyledResponsesCont from './ResponsesCont';
 import StyledPromptCont from './PromptCont';
+import StyledDemoPromptCont from './DemoPromptCont';
+import StyledDemoResponsesCont from './DemoResponsesCont';
 
 const IntroCont = styled.div`
   max-width: 1280px;
   margin: auto;
 `;
 
-function LowerDash({ className, cards, addCard, user }) {
+function LowerDash({
+  className, cards, addCard, user, demo, setFilter,
+}) {
   return (
     <div className={className}>
       <StyledContainer fullPadding>
         <IntroCont>
-          <StyledPromptCont addCard={addCard} user={user} />
-          <StyledResponsesCont cards={cards} />
+          { demo
+            ?
+            <StyledDemoPromptCont addCard={addCard} user={user} />
+            :
+            <StyledPromptCont addCard={addCard} user={user} />
+          }
+          { demo
+            ?
+            <StyledDemoResponsesCont cards={cards} setDashFilter={setFilter} />
+            :
+            <StyledResponsesCont cards={cards} />
+          }
+
         </IntroCont>
       </StyledContainer>
     </div>
