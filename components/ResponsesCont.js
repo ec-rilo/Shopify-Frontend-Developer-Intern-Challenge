@@ -42,8 +42,6 @@ const StyledH2 = styled.h2`
 function ResponsesCont({ className, cards }) {
   const [selectedFilter, setSelectedFilter] = useState('most recent');
 
-
-
   useEffect(() => {
     const socket = io();
     socket.emit('cardPosted', selectedFilter);
