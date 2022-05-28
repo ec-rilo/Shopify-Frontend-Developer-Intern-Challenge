@@ -84,6 +84,38 @@ Log into postgres with a user of your choice that has permission to create datab
 postgres=# CREATE DATABASE fun_with_gpt_3
 ````
 
+### Step 3. Seed database with tables.
+
+Within postgres, switch to the `fun_with_gpt_3` database and run the following command that will seed the database with the required tables.
+
+(Note: you must be within the root directory for this to work.)
+(Feel free to take a look at the `tables.sql` to see what's occuring.)
+
+```bash
+fun_with_gpt_3=# \i server/db/tables.sql
+````
+You're database is now ready for taking in data.
+
+### Step 4. Create a Firebase project and use the provided config.
+
+This step is going to be where you do a bit of research. Create a firebase project and initialize it. Once you initialize it you will get an object simliar to this
+
+```javascript
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
+```
+
+What you're going to do is make a copy of `example.env.local` and name it `.env.local`. Then, within file `.env.local` fill in the the data you can  for the FIREBASE lines (Should only be able to fill out the first 7 lines).
+
+
+
 First, run the development server:
 
 ```bash
