@@ -19,11 +19,11 @@ const server = {
   addCard: (card) => new Promise ((resolve, reject) => {
     axios.post('cards/card', {
       id: card.id,
-      userEmail: card.userEmail,
+      user_email: card.user_email,
       prompt: card.prompt,
-      aiResponse: card.aiResponse,
-      timeStamp: card.timeStamp,
-      engineModel: card.engineModel,
+      ai_response: card.ai_response,
+      time_stamp: card.time_stamp,
+      engine_model: card.engine_model,
     })
       .then((response) => {
         resolve(response);
