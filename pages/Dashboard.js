@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 // Assets
 import { io } from "socket.io-client";
+import server from './api/server';
 
 // Firebase
 import { auth } from '../firebaseConfig';
@@ -18,7 +19,6 @@ function Dashboard({ className }) {
   const [userData, setUserData] = useState('');
   const [cards, setCards] = useState([]);
   const [userName, setUserName] = useState('');
-
 
   // Loads user information
   useEffect(() => {
@@ -42,12 +42,22 @@ function Dashboard({ className }) {
         setCards(newCards);
       }
     })
-  }, [])
+  }, []);
+
+  const addCard = (cardData) => {
+    server.addCard(cardData)
+      .then(() => {
+        socket.emit('cardPosted', 'most recent');
+      })
+      .catch((err) => {
+        console.error('post failed!: ', err);
+      });
+  }
 
   return (
     <div className={className}>
       <StyledUpperDash userName={userName} />
-      <StyledLowerDash cards={cards} user={userData} />
+      <StyledLowerDash cards={cards} user={userData} addCard={addCard} />
     </div>
   );
 }
