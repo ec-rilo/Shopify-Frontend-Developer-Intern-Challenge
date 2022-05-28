@@ -9,6 +9,8 @@ const nextHandler = nextApp.getRequestHandler()
 nextApp.prepare().then(() => {
   const app = express();
 
+  const PORT = process.env.SERVER_PORT || 3000;
+
   // models
   const models = require('./models/models');
 
@@ -26,7 +28,7 @@ nextApp.prepare().then(() => {
   const server = require('http').createServer(app);
   const io = require('socket.io')(server, {
     cors: {
-      origin: "http://localhost:8080",
+      origin: `http://localhost:${PORT}`,
       methods: ["GET", "POST"]
     }
   });
@@ -84,7 +86,7 @@ nextApp.prepare().then(() => {
     return nextHandler(req, res)
   })
 
-  const PORT = process.env.SERVER_PORT || 3000;
+
 
   server.listen(PORT, () => {
     console.log(`> Ready on http://localhost:${PORT}`)
