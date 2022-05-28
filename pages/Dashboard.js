@@ -38,13 +38,13 @@ function Dashboard({ className }) {
     const socket = io();
     socket.once('allCardsDesc', (newCards) => {
       if (Array.isArray(newCards)) {
-        console.log('asdf')
         setCards(newCards);
       }
     })
   }, []);
 
   const addCard = (cardData) => {
+    const socket = io();
     server.addCard(cardData)
       .then(() => {
         socket.emit('cardPosted', 'most recent');
