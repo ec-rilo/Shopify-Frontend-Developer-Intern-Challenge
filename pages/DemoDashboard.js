@@ -77,7 +77,7 @@ function DemoDashboard({ className }) {
         cards={cards}
         addCard={addCard}
         user={userData}
-        setFilter={setFilter} demo
+        setFilter={setFilter}
       />
     </div>
   );
