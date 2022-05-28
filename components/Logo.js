@@ -37,6 +37,7 @@ const StyledLogo = styled(Logo)`
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--clr-black);
 `;
 
 export default StyledLogo;

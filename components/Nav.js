@@ -75,7 +75,9 @@ const StyledUserNameCont = styled(UserNameCont)`
 function Nav({ className, userName, dashboard }) {
   return (
     <nav className={className}>
-      <Logo />
+      <a style={{ textDecoration: 'none' }}href="https://github.com/ec-rilo" target="_blank" rel="noreferrer">
+        <Logo />
+      </a>
       <StyledUserNameCont userName={userName} dashboard={dashboard && userName}/>
     </nav>
   );
