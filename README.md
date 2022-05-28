@@ -112,7 +112,7 @@ const firebaseConfig = {
 };
 ```
 
-What you're going to do is make a copy of `example.env.local` and name it `.env.local`. Then, within file `.env.local` fill in the the data you can  for the FIREBASE lines (Should only be able to fill out the first 7 lines).
+What you're going to do is make a copy of `example.env.local` that's within your repository and name it `.env.local`. Then, within file `.env.local` fill in the the data you can  for the FIREBASE lines (Should only be able to fill out the first 7 lines).
 
 
 
