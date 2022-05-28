@@ -19,6 +19,8 @@ function Dashboard({ className }) {
   const [userData, setUserData] = useState('');
   const [cards, setCards] = useState([]);
   const [userName, setUserName] = useState('');
+  const [dashFilter, setDashFilter] = useState('most recent');
+  const [socket] = useState(io());
 
   // Loads user information
   useEffect(() => {
@@ -33,35 +35,40 @@ function Dashboard({ className }) {
     }
   }, [user]);
 
-  // Loads cards on load.
-  useEffect(() => {
-    // edit this to be an axios call to server.
-    server.getCards('most recent')
-      .then((cards) => {
-        if (Array.isArray(cards)) {
-          setCards(cards);
-        }
-        console.log(cards);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-  }, []);
+  /* ------------ Loads cards depending on filter ------------ */
 
-  const addCard = (cardData) => {
-    const socket = io();
+  useEffect(() => {
+    const updateCards = (postedEngine) => {
+      if (dashFilter === 'most recent' || dashFilter === postedEngine) {
+        server.getCards(dashFilter)
+          .then((cards) => {
+            if (Array.isArray(cards)) {
+              setCards(cards);
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    };
+
+    updateCards(dashFilter);
+
+    socket.removeAllListeners('cardAddedToDB');
+    socket.on('cardAddedToDB', (response) => {
+      updateCards(response);
+    });
+
+  }, [dashFilter, socket]);
+
+  const addCard = (cardData, engineName) => {
     server.addCard(cardData)
       .then(() => {
-        socket.emit('cardPosted', 'most recent');
+        socket.emit('cardPosted', engineName);
       })
       .catch((err) => {
         console.error('post failed!: ', err);
       });
-  }
-
-  const setDashFilter = (selectedFilter) => {
-    const socket = io();
-    socket.emit('cardPosted', selectedFilter);
   }
 
   return (
