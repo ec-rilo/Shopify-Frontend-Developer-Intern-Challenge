@@ -24,7 +24,7 @@
 ## Table of Content
 - [Motivation and Story](#motivation-and-story)
 - [Features](#features)
-- [Getting Started](#getting-started)
+- [Getting Started (locally)](#getting-started-locally)
 
 <br />
 
@@ -84,7 +84,7 @@ Log into postgres with a user of your choice that has permission to create datab
 postgres=# CREATE DATABASE fun_with_gpt_3
 ````
 
-### Step 3. Seed database with tables.
+### Step 3. Seed database with tables
 
 Within postgres, switch to the `fun_with_gpt_3` database and run the following command that will seed the database with the required tables.
 
@@ -96,7 +96,7 @@ fun_with_gpt_3=# \i server/db/tables.sql
 ````
 You're database is now ready for taking in data.
 
-### Step 4. Create a Firebase project and use the provided config.
+### Step 4. Create a Firebase project and use the provided config
 
 This step is going to be where you do a bit of research. Create a firebase project and initialize it. Once you initialize it you will get an object simliar to this
 
@@ -118,7 +118,7 @@ What you're going to do is make a copy of `example.env.local` that's within your
 
 I'm going to leave getting these up to you. But once you [sign up for OpenAI](https://openai.com/api/) and get the API Key and Organization ID make sure to add them into the `.env.local` file.
 
-### Step 5. Fill out remaining information in .env.local file.
+### Step 5. Fill out remaining information in .env.local file
 
 There should now be 5 lines in `.env.local` that need content. Fill them out with the following.
 
@@ -133,8 +133,9 @@ PG_PASS= WHATEVER PASSWORD YOU CREATED FOR YOUR PG_USER.
 
 If your postgres user doesn't have a password make sure to create one for it.
 
+### Step 6. Run the Development server
 
-First, run the development server:
+The app should now be good to go. All you have to do now is run the development server:
 
 ```bash
 npm run dev
