@@ -39,13 +39,12 @@ const StyledH2 = styled.h2`
   font-size: 1.3rem;
 `;
 
-function ResponsesCont({ className, cards }) {
+function ResponsesCont({ className, cards, setDashFilter }) {
   const [selectedFilter, setSelectedFilter] = useState('most recent');
 
   useEffect(() => {
-    const socket = io();
-    socket.emit('cardPosted', selectedFilter);
-  }, [selectedFilter]);
+    setDashFilter(selectedFilter);
+  }, [selectedFilter, setDashFilter]);
 
   return (
     <div className={className}>
