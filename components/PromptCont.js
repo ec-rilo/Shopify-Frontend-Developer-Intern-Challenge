@@ -67,11 +67,11 @@ function PromptCont({ className, addCard, user }) {
               .then((response) => {
                 const cardData = {
                   id: response.id,
-                  userEmail: user.email,
+                  user_email: user.email,
                   prompt: userRequest,
-                  aiResponse: response.choices[0].text,
-                  timeStamp: response.created,
-                  engineModel: response.model,
+                  ai_response: response.choices[0].text,
+                  time_stamp: response.created,
+                  engine_model: response.model,
                 };
 
                 addCard(cardData);
