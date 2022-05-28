@@ -14,25 +14,14 @@ const IntroCont = styled.div`
 `;
 
 function LowerDash({
-  className, cards, addCard, user, demo, setFilter,
+  className, cards, addCard, user, setFilter,
 }) {
   return (
     <div className={className}>
       <StyledContainer fullPadding>
         <IntroCont>
-          { demo
-            ?
-            <StyledDemoPromptCont addCard={addCard} user={user} />
-            :
-            <StyledPromptCont user={user} addCard={addCard} />
-          }
-          { demo
-            ?
-            <StyledDemoResponsesCont cards={cards} setDashFilter={setFilter} />
-            :
-            <StyledResponsesCont cards={cards} setDashFilter={setFilter} />
-          }
-
+          <StyledPromptCont user={user} addCard={addCard} />
+          <StyledResponsesCont cards={cards} setDashFilter={setFilter} />
         </IntroCont>
       </StyledContainer>
     </div>
