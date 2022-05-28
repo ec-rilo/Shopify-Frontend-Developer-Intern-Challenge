@@ -22,7 +22,6 @@ function Dashboard({ className }) {
   const [dashFilter, setDashFilter] = useState('most recent');
   const [socket] = useState(io());
 
-  // Loads user information
   useEffect(() => {
     if (user) {
       setUserName(user.displayName);
