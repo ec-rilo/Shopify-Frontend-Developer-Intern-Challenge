@@ -35,12 +35,17 @@ function Dashboard({ className }) {
 
   // Loads cards on load.
   useEffect(() => {
-    const socket = io();
-    socket.once('allCardsDesc', (newCards) => {
-      if (Array.isArray(newCards)) {
-        setCards(newCards);
-      }
-    })
+    // edit this to be an axios call to server.
+    server.getCards('most recent')
+      .then((cards) => {
+        if (Array.isArray(cards)) {
+          setCards(cards);
+        }
+        console.log(cards);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }, []);
 
   const addCard = (cardData) => {
@@ -54,10 +59,15 @@ function Dashboard({ className }) {
       });
   }
 
+  const setDashFilter = (selectedFilter) => {
+    const socket = io();
+    socket.emit('cardPosted', selectedFilter);
+  }
+
   return (
     <div className={className}>
       <StyledUpperDash userName={userName} />
-      <StyledLowerDash cards={cards} user={userData} addCard={addCard} />
+      <StyledLowerDash cards={cards} user={userData} addCard={addCard} setFilter={setDashFilter} />
     </div>
   );
 }
