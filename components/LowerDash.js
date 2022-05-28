@@ -30,7 +30,7 @@ function LowerDash({
             ?
             <StyledDemoResponsesCont cards={cards} setDashFilter={setFilter} />
             :
-            <StyledResponsesCont cards={cards} />
+            <StyledResponsesCont cards={cards} setDashFilter={setFilter} />
           }
 
         </IntroCont>
