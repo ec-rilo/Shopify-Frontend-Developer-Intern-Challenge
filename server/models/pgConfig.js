@@ -1,7 +1,7 @@
 module.exports = {
-  user: "postgres",
-  host: 'localhost',
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
   database: "fun_with_gpt_3",
-  password: "123456",
+  password: process.env.PG_PASS,
   port: 5432,
 }
