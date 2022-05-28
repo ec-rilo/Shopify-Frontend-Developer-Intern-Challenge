@@ -19,24 +19,12 @@ function Dashboard({ className }) {
   const [cards, setCards] = useState([]);
   const [userName, setUserName] = useState('');
 
+
   // Loads user information
   useEffect(() => {
     if (user) {
       setUserName(user.displayName);
-    }
-  }, [user]);
 
-  useEffect(() => {
-    const socket = io();
-    socket.on('allCardsDesc', (newCards) => {
-      if (Array.isArray(newCards)) {
-        setCards(newCards);
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    if (user) {
       setUserData({
         email: user.email,
         name: user.displayName,
@@ -44,6 +32,17 @@ function Dashboard({ className }) {
       });
     }
   }, [user]);
+
+  // Loads cards on load.
+  useEffect(() => {
+    const socket = io();
+    socket.once('allCardsDesc', (newCards) => {
+      if (Array.isArray(newCards)) {
+        console.log('asdf')
+        setCards(newCards);
+      }
+    })
+  }, [])
 
   return (
     <div className={className}>
