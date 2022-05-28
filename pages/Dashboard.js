@@ -29,21 +29,11 @@ function Dashboard({ className }) {
   useEffect(() => {
     const socket = io();
     socket.on('allCardsDesc', (newCards) => {
-      setCards(newCards);
+      if (Array.isArray(newCards)) {
+        setCards(newCards);
+      }
     })
   }, [])
-
-  const addCard = (cardData, userInput) => {
-    const newCardData = { ...cardData };
-
-    newCardData.userName = user.displayName;
-    newCardData.userInput = userInput;
-    newCardData.userImg = user.photoURL;
-
-    let newCards = cards.slice();
-    newCards.unshift(newCardData);
-    // setCards(newCards);
-  }
 
   useEffect(() => {
     if (user) {
@@ -58,7 +48,7 @@ function Dashboard({ className }) {
   return (
     <div className={className}>
       <StyledUpperDash userName={userName} />
-      <StyledLowerDash cards={cards} addCard={addCard} user={userData} />
+      <StyledLowerDash cards={cards} user={userData} />
     </div>
   );
 }
