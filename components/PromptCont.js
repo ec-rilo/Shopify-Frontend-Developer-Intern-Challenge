@@ -83,8 +83,6 @@ function PromptCont({ className, addCard, user }) {
                   .catch((err) => {
                     console.error('post failed!: ', err);
                   });
-
-                addCard(response, userRequest);
               })
               .catch((err) => {
                 console.error(err);
