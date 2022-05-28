@@ -11,9 +11,6 @@ nextApp.prepare().then(() => {
 
   const PORT = process.env.SERVER_PORT || 3000;
 
-  // models
-  const models = require('./models/models');
-
   // middleware
   app.use(express.json());
 
@@ -34,47 +31,11 @@ nextApp.prepare().then(() => {
   });
 
   io.on('connection', (socket) => {
+
+    console.log('connected');
+
     socket.on('cardPosted', (response) => {
-
-      const getCardsDescOrder = () => {
-        models.cards.getAllFiltered()
-          .then((response) => {
-            io.sockets.emit('allCardsDesc', response);
-          })
-          .catch(() => {
-            console.error('failed to get all filtered cards');
-          });
-      }
-
-      const getCardsEngineOrder = (engineName) => {
-        models.cards.getAllFilteredEngine(engineName)
-          .then((response) => {
-            io.sockets.emit('allCardsDesc', response);
-          })
-          .catch(() => {
-            console.error('failed to get all filtered cards');
-          });
-      }
-
-      switch(response) {
-        case 'most recent':
-          getCardsDescOrder();
-          break;
-        case 'text-curie-001':
-          getCardsEngineOrder('text-curie-001');
-          break;
-        case 'text-davinci-002':
-          getCardsEngineOrder('text-davinci-002');
-          break;
-        case 'text-babbage-001':
-          getCardsEngineOrder('text-babbage-001');
-          break;
-        case 'text-ada-001':
-          getCardsEngineOrder('text-ada-001');
-          break;
-        default:
-          break;
-      }
+      io.sockets.emit('cardAddedToDB', response);
     });
 
     socket.on('disconnect', () => {
