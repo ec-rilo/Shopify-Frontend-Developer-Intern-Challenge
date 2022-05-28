@@ -79,7 +79,11 @@ function LoginIntro({ className }) {
     <div className={className}>
       <TextCont>
         <StyledH1>Fun with GPT-3</StyledH1>
-        <StyledP>Lorem Ipsum set dolor von amet lot something at <StyledEmphasis>Shopify</StyledEmphasis> and <StyledEmphasis>Redwoods.hum</StyledEmphasis>!</StyledP>
+        <StyledP>
+          Talk with <StyledEmphasis>OpenAI</StyledEmphasis>! Project inspired by
+          {' '}
+          <StyledEmphasis>Shopify</StyledEmphasis> and created by <StyledEmphasis>Edgar Carrillo</StyledEmphasis>
+        </StyledP>
       </TextCont>
       <ImgCont>
         <StyledImg src={womenCompSrc} alt="A women pointing at an ai computer" />
