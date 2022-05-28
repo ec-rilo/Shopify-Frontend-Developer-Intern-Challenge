@@ -12,7 +12,7 @@
 <h1 align="center">Fun with GPT-3</h1>
 
 <div align="center" width="100%">
-    <img src="https://i.imgur.com/YgUQmDV.png">
+    <img src="https://i.imgur.com/8n2AyP4.png">
 </div>
 
 <h4 align="center">Have fun with the <a href="https://beta.openai.com/overview" target="_blank">OpenAI</a> API and see what others are posting.</h4>
