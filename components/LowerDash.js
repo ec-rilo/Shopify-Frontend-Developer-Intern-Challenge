@@ -24,7 +24,7 @@ function LowerDash({
             ?
             <StyledDemoPromptCont addCard={addCard} user={user} />
             :
-            <StyledPromptCont user={user} />
+            <StyledPromptCont user={user} addCard={addCard} />
           }
           { demo
             ?
