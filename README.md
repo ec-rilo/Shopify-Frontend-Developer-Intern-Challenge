@@ -29,13 +29,13 @@
 <br />
 
 ## Motivation and Story
-This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project I went above and beyond the scope implementing a RESTful back-end along with a Demo version of the app that users can play with locally.
+This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project that I chose to go above and beyond with by including a RESTful backend with live questions updates from all users with Socket.io. 
 
 The project wasn't able to be submitted to Shopify in time since I found out about it right after graduation and the deadline was two days after.(graduated 05/20/2022 😊). But, that didn't stop me from trying!
 
-So over a period of 5 days I was able to plan, mock, create and deploy this fully responsive application to AWS. Showing my skills across the full-stack.
+So over a period of 6 days I was able to plan, mock, create and deploy this fully responsive application to AWS. Showing my skills across the full-stack.
 
-I wanted to showcase my skills and I hope this project shows that!
+Enjoy! :) 
 
 **Extra Information**
 
@@ -62,14 +62,32 @@ I wanted to showcase my skills and I hope this project shows that!
   - The same application but NOT linked to a users google account or to others users on the application. The posts you make here to OpenAI are just yours and only viewable on your device.
 <br />
 
-## Getting Started
+## Getting Started (locally)
+
+### Step 1. Clone this repo
+
+With SSH
+```bash
+$ git clone git@github.com:ec-rilo/fun-with-gpt-3.git
+```
+
+With HTTPS
+```bash
+$ git clone https://github.com/ec-rilo/fun-with-gpt-3.git
+```
+
+### Step 2. Create a PostgreSQL database
+
+Log into postgres with a user of your choice that has permission to create databases (for me it's user `postgres`) and create the database `fun_with_gpt_3`
+
+```bash
+postgres=# CREATE DATABASE fun_with_gpt_3
+````
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
