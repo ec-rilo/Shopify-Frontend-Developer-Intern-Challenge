@@ -86,8 +86,6 @@ nextApp.prepare().then(() => {
     return nextHandler(req, res)
   })
 
-
-
   server.listen(PORT, () => {
     console.log(`> Ready on http://localhost:${PORT}`)
   })
