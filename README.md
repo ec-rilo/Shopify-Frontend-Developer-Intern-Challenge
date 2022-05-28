@@ -16,6 +16,7 @@
 </div>
 
 <h4 align="center">Have fun with the <a href="https://beta.openai.com/overview" target="_blank">OpenAI</a> API and see what others are posting.</h4>
+<p align="center"> <a href="http://54.183.215.58:8080/">View Live >></a></p>
 
 <br />
 
