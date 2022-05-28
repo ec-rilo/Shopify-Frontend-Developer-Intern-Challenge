@@ -14,11 +14,11 @@ module.exports = {
 
     const inputs = [
       cardData.id,
-      cardData.userEmail,
+      cardData.user_email,
       cardData.prompt,
-      cardData.aiResponse,
-      cardData.timeStamp,
-      cardData.engineModel
+      cardData.ai_response,
+      cardData.time_stamp,
+      cardData.engine_model
     ];
 
     return pool.query(query, inputs)
