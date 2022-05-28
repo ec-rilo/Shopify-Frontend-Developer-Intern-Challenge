@@ -74,7 +74,7 @@ function PromptCont({ className, addCard, user }) {
                   engine_model: response.model,
                 };
 
-                addCard(cardData);
+                addCard(cardData, engine);
               })
               .catch((err) => {
                 console.error(err);
