@@ -114,6 +114,24 @@ const firebaseConfig = {
 
 What you're going to do is make a copy of `example.env.local` that's within your repository and name it `.env.local`. Then, within file `.env.local` fill in the the data you can  for the FIREBASE lines (Should only be able to fill out the first 7 lines).
 
+### Step 4. Create an account with OpenAI and get API Key and Organiziation ID
+
+I'm going to leave getting these up to you. But once you [sign up for OpenAI](https://openai.com/api/) and get the API Key and Organization ID make sure to add them into the `.env.local` file.
+
+### Step 5. Fill out remaining information in .env.local file.
+
+There should now be 5 lines in `.env.local` that need content. Fill them out with the following.
+
+```bash
+IO_PORT=3000
+SERVER_PORT=8080
+
+PG_USER=postgres
+PG_HOST=localhost
+PG_PASS= WHATEVER PASSWORD YOU CREATED FOR YOUR PG_USER.
+```
+
+If your postgres user doesn't have a password make sure to create one for it.
 
 
 First, run the development server:
