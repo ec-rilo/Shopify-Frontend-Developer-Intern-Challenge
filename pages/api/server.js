@@ -33,6 +33,28 @@ const server = {
       });
   }),
 
+  getCards: (filter) => new Promise ((resolve, reject) => {
+    let query = query = 'cards/all_filtered_cards';
+    let paramsObj = {};
+
+    if (filter !== 'most recent') {
+      query = 'cards/all_filtered_cards_engine';
+      paramsObj = {
+        params: {
+          engineName: filter
+        }
+      }
+    }
+
+    axios.get(query, paramsObj)
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+
 }
 
 export default server;
