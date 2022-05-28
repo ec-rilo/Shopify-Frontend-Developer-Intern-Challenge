@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { io } from "socket.io-client";
 
 // Assets
 import { requestOpenAI } from '../pages/api/openAi';
-import server from '../pages/api/server';
 
 // Components
 import { StyledBtn2 } from './Btns';
@@ -35,7 +33,6 @@ const StyledSubmitBtnCont = styled.div`
 function PromptCont({ className, addCard, user }) {
   const [userRequest, setUserRequest] = useState('');
   const [engine, setEngine] = useState('text-curie-001');
-  const socket = io();
 
   const getAIResponse = (request) => (
     new Promise((resolve, reject) => {
@@ -76,13 +73,8 @@ function PromptCont({ className, addCard, user }) {
                   timeStamp: response.created,
                   engineModel: response.model,
                 };
-                server.addCard(cardData)
-                  .then(() => {
-                    socket.emit('cardPosted', 'most recent');
-                  })
-                  .catch((err) => {
-                    console.error('post failed!: ', err);
-                  });
+
+                addCard(cardData);
               })
               .catch((err) => {
                 console.error(err);
