@@ -22,11 +22,15 @@
 
 
 ## Table of Content
+- [Usage](#usage)
 - [Motivation and Story](#motivation-and-story)
 - [Features](#features)
 - [Getting Started (locally)](#getting-started-locally)
 
 <br />
+
+## Usage
+Chat with AI and see the questions you ask it and others ask it LIVE! Or, try the demo version out to only have the posts be seen by you.
 
 ## Motivation and Story
 This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project that I chose to go above and beyond with by including a RESTful backend with live questions updates from all users with Socket.io. 
