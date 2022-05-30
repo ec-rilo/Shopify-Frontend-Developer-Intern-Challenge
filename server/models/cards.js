@@ -32,7 +32,10 @@ module.exports = {
 
   getAllFiltered: () => {
     const query = `
-      SELECT * FROM card_data, users ORDER BY card_data.time_stamp DESC;
+      SELECT *
+      FROM card_data, users
+      WHERE card_data.user_email = users.email
+      ORDER BY card_data.time_stamp DESC;
     `;
 
     return pool.query(query)
@@ -48,6 +51,7 @@ module.exports = {
     const query = `
       SELECT * FROM card_data, users
       WHERE card_data.engine_model = $1
+      AND card_data.user_email = users.email
       ORDER BY card_data.time_stamp DESC;
     `;
 
