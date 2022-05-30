@@ -12,10 +12,11 @@
 <h1 align="center">Fun with GPT-3</h1>
 
 <div align="center" width="100%">
-    <img src="https://i.imgur.com/YgUQmDV.png">
+    <img src="https://i.imgur.com/8n2AyP4.png">
 </div>
 
 <h4 align="center">Have fun with the <a href="https://beta.openai.com/overview" target="_blank">OpenAI</a> API and see what others are posting.</h4>
+<p align="center"> <a href="http://54.183.215.58:8080/">View Live >></a></p>
 
 <br />
 
@@ -23,18 +24,18 @@
 ## Table of Content
 - [Motivation and Story](#motivation-and-story)
 - [Features](#features)
-- [Getting Started](#getting-started)
+- [Getting Started (locally)](#getting-started-locally)
 
 <br />
 
 ## Motivation and Story
-This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project I went above and beyond the scope implementing a RESTful back-end along with a Demo version of the app that users can play with locally.
+This is a project based on the Shopify Front End Developer Intern Challenge [document provided by Shopify](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit#). The document had a bare minumum of requirements needed but for this project that I chose to go above and beyond with by including a RESTful backend with live questions updates from all users with Socket.io. 
 
 The project wasn't able to be submitted to Shopify in time since I found out about it right after graduation and the deadline was two days after.(graduated 05/20/2022 😊). But, that didn't stop me from trying!
 
-So over a period of 5 days I was able to plan, mock, create and deploy this fully responsive application to AWS. Showing my skills across the full-stack.
+So over a period of 6 days I was able to plan, mock, create and deploy this fully responsive application to AWS. Showing my skills across the full-stack.
 
-I wanted to showcase my skills and I hope this project shows that!
+Enjoy! :) 
 
 **Extra Information**
 
@@ -61,14 +62,83 @@ I wanted to showcase my skills and I hope this project shows that!
   - The same application but NOT linked to a users google account or to others users on the application. The posts you make here to OpenAI are just yours and only viewable on your device.
 <br />
 
-## Getting Started
+## Getting Started (locally)
 
-First, run the development server:
+### Step 1. Clone this repo
+
+With SSH
+```bash
+$ git clone git@github.com:ec-rilo/fun-with-gpt-3.git
+```
+
+With HTTPS
+```bash
+$ git clone https://github.com/ec-rilo/fun-with-gpt-3.git
+```
+
+### Step 2. Create a PostgreSQL database
+
+Log into postgres with a user of your choice that has permission to create databases (for me it's user `postgres`) and create the database `fun_with_gpt_3`
+
+```bash
+postgres=# CREATE DATABASE fun_with_gpt_3
+````
+
+### Step 3. Seed database with tables
+
+Within postgres, switch to the `fun_with_gpt_3` database and run the following command that will seed the database with the required tables.
+
+(Note: you must be within the root directory for this to work.)
+(Feel free to take a look at the `tables.sql` to see what's occuring.)
+
+```bash
+fun_with_gpt_3=# \i server/db/tables.sql
+````
+You're database is now ready for taking in data.
+
+### Step 4. Create a Firebase project and use the provided config
+
+This step is going to be where you do a bit of research. Create a firebase project and initialize it. Once you initialize it you will get an object simliar to this
+
+```javascript
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
+```
+
+What you're going to do is make a copy of `example.env.local` that's within your repository and name it `.env.local`. Then, within file `.env.local` fill in the the data you can  for the FIREBASE lines (Should only be able to fill out the first 7 lines).
+
+### Step 4. Create an account with OpenAI and get API Key and Organiziation ID
+
+I'm going to leave getting these up to you. But once you [sign up for OpenAI](https://openai.com/api/) and get the API Key and Organization ID make sure to add them into the `.env.local` file.
+
+### Step 5. Fill out remaining information in .env.local file
+
+There should now be 5 lines in `.env.local` that need content. Fill them out with the following.
+
+```bash
+IO_PORT=3000
+SERVER_PORT=8080
+
+PG_USER=postgres
+PG_HOST=localhost
+PG_PASS= WHATEVER PASSWORD YOU CREATED FOR YOUR PG_USER.
+```
+
+If your postgres user doesn't have a password make sure to create one for it.
+
+### Step 6. Run the Development server
+
+The app should now be good to go. All you have to do now is run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
