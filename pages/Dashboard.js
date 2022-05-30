@@ -40,9 +40,9 @@ function Dashboard({ className }) {
     const updateCards = (postedEngine) => {
       if (dashFilter === 'most recent' || dashFilter === postedEngine) {
         server.getCards(dashFilter)
-          .then((cards) => {
-            if (Array.isArray(cards)) {
-              setCards(cards);
+          .then((responseCards) => {
+            if (Array.isArray(responseCards)) {
+              setCards(responseCards);
             }
           })
           .catch((err) => {
